@@ -4,8 +4,7 @@
 * This Bot is under development ** 
 ### Commands :
 ```sh
-$help
-$inspire
+
 ```
 
 **Free , Hell Yeah!**
