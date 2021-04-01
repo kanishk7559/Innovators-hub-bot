@@ -1,9 +1,5 @@
 
 # Discord Bot @ Innovators Hub
 * This Bot is under development ** 
-### Commands :
-```sh
-
-```
-
-**Free , Hell Yeah!**
+ Creators 
+Kanishk, Rushikesh Patade [Rushour0](https://github.com/Rushour0), Jatin
