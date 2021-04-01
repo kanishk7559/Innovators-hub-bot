@@ -1,0 +1,58 @@
+{
+    "Monday": {
+        "8:30 - 9:30": "Integral Calculus",
+        "9:30 - 10:30": "Physics",
+        "10:30 - 10:45": "Break",
+        "10:45 - 11:45": "Basic Civil Engineering",
+        "11:45 - 12:45": "HDPC",
+        "12:45 - 13:30": "Break",
+        "13:30 - 14:30": "Engineering Graphics",
+        "14:30 - 16:45": "Effective Communication (LAB)"
+    },
+    "Tuesday": {
+        "8:30 - 9:30": "Engineering Graphics",
+        "9:30 - 10:30": "HDPC",
+        "10:30 - 10:45": "Break",
+        "10:45 - 11:45": "Effective Communication",
+        "11:45 - 12:45": "Physics",
+        "12:45 - 13:30": "Break",
+        "13:30 - 14:30": "Basic Mechanical Engineering",
+        "14:30 - 16:45": "Basic Civil Engineering (LAB)"
+    },
+    "Wednesday": {
+        "8:30 - 9:30": "Engineering Graphics",
+        "9:30 - 10:30": "Basic Mechanical Engineering",
+        "10:30 - 10:45": "Break",
+        "10:45 - 11:45": "Effective Communication",
+        "11:45 - 12:45": "Biology",
+        "12:45 - 13:30": "Break",
+        "13:30 - 15:30": "Physics (LAB)"
+    },
+    "Thursday": {
+        "8:30 - 9:30": "Basics Civil Engineering",
+        "9:30 - 10:30": "Physics",
+        "10:30 - 10:45": "Break",
+        "10:45 - 11:45": "HDPC",
+        "11:45 - 12:45": "Integral Calculus",
+        "12:45 - 13:30": "Break",
+        "13:30 - 15:30": "Workshop Practices (LAB)"
+    },
+    "Friday": {
+        "8:30 - 9:30": "Physics (Tutorial)",
+        "9:30 - 10:30": "Basic Mechanical Engineering",
+        "10:30 - 10:45": "Break",
+        "10:45 - 11:45": "Biology",
+        "11:45 - 12:45": "Basic Civil Engineering",
+        "12:45 - 13:30": "Break",
+        "13:30 - 15:30": "Basic Mechanical Engineering (LAB)"
+    },
+    "Saturday": {
+        "8:30 - 9:30": "Basic Mechanical Engineering",
+        "9:30 - 10:30": "Biology",
+        "10:30 - 10:45": "Break",
+        "10:45 - 11:45": "Integral Calculus",
+        "11:45 - 12:45": "Integral Calculus (Tutorial)",
+        "12:45 - 13:30": "Break",
+        "13:30 - 15:30": "Engineering Graphics (LAB)"
+    }
+}
