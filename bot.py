@@ -16,6 +16,7 @@ import webbrowser
 from googlesearch import search
 import datetime
 import pyowm
+import praw
 
 
 load_dotenv()
@@ -31,6 +32,19 @@ classes = pickle.load(open('classes.pkl', 'rb'))
 client = discord.Client()
 clientWA = wolframalpha.Client(APIid)
 owm = pyowm.OWM(owmkey)
+
+clientid=os.getenv("client_id")
+clientsecret = os.getenv("client_secret")
+password=os.getenv("password")
+useragent=os.getenv("user_agent")
+username=os.getenv("username")
+
+
+reddit = praw.Reddit(client_id=clientid,
+                     client_secret=clientsecret, 
+                     password=password,
+                     user_agent=useragent,
+                     username=username,check_for_async=False)
 
 
 jsontimetable = open('timetable.json')
@@ -91,6 +105,13 @@ def checktimetable():
             reply = "Lectures have ended for the day."
 
     return(reply)
+
+
+def getmeme():
+    subreddit = reddit.subreddit("memes")
+    meme = subreddit.random()
+    return meme.url
+
 
 
 def clean_up_sentence(sentence):
@@ -200,7 +221,10 @@ class MyClient(discord.Client):
                     tempdict = w.get_temperature('celsius')
                     reply = f"Temperature right now is {tempdict['temp']}°C, today's maximum will be {tempdict['temp_max']}°C and minimum will be {tempdict['temp_min']}°C ."
                     await message.reply(reply)
-
+                
+                elif ints[0]['intent']=="meme":
+                    reply=getmeme()
+                    await message.reply(reply)
                 if (message.content.startswith('solve')):
                     question = message.content[6:]
                     res = clientWA.query(question)
