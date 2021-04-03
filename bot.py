@@ -143,7 +143,7 @@ def predict_class(sentence, model):
     # filter out predictions below a threshold
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.25
+    ERROR_THRESHOLD = 0.10
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     # sort by strength of probability
     results.sort(key=lambda x: x[1], reverse=True)
@@ -171,25 +171,26 @@ def get_quote():
 
 
 unlocked = False
+channelsAllowed = set()
 
 
 class MyClient(discord.Client):
     async def on_message(self, message):
+        channel = msg.channel.id
         msg = message.content
         global unlocked
         if message.content == 'unlock':
-            print(";__;")
+            print(f"{channel} is now unlocked")
+            channelsAllowed.add(channel)
             unlocked = True
-            await message.reply("saypls command is now unlocked")
+            await message.reply("Command is now unlocked")
 
         if message.content == 'lock':
             unlocked = False
-            await message.reply("saypls command is now locked")
+            channelsAllowed.remove(channel)
+            await message.reply("Command is now locked")
 
-        if message.author.id == self.user.id:
-            return
-
-        if (unlocked):
+        if unlocked and channel is in channelsAllowed:
             if message.content.startswith('inspire'):
                 await message.channel.send(get_quote())
             elif message.content.startswith('wiki'):
