@@ -111,6 +111,12 @@
      "patterns": ["What's the schedule like today?", "What are my lectures for the day", "What is the timetable for today", "List of classes today","List of lectures", "Show timetable"],
      "responses": ["Loading up timetable"],
      "context": [""]
+    },
+
+    {"tag": "meme",
+     "patterns": ["Send some memes.", "Share memes please", "Can you send me some memes?", "Time for some memes","Send meme plox", "fresh memes please","Send something funny"],
+     "responses": ["lemme check", "Loading up fresh meme"],
+     "context": [""]
     }
 ]
 }
