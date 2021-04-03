@@ -4,7 +4,6 @@ pip3.6 install pytz -q
 pip3.6 install datetime -q
 pip3.6 install nltk -q
 pip3.6 install wolframalpha -q
-pip3.6 install googlesearch-python -q
 pip3.6 install pyowm -q
 pip3.6 install pickle -q
 pip3.6 install keras -q
