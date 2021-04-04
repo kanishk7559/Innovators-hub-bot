@@ -1,4 +1,5 @@
-pip3.6 install google -q
+pip3.6 install googlesearch-python -q
+pip3.6 install google
 pip3.6 install wikipedia -q
 pip3.6 install pytz -q
 pip3.6 install datetime -q
