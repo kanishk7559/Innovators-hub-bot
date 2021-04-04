@@ -176,9 +176,11 @@ channelsAllowed = set()
 
 class MyClient(discord.Client):
     async def on_message(self, message):
-        channel = msg.channel.id
+        channel = message.channel.id
         msg = message.content
         global unlocked
+        if message.author == client.user:
+        	return
         if message.content == 'unlock':
             print(f"{channel} is now unlocked")
             channelsAllowed.add(channel)
@@ -190,7 +192,7 @@ class MyClient(discord.Client):
             channelsAllowed.remove(channel)
             await message.reply("Command is now locked")
 
-        if unlocked and channel is in channelsAllowed:
+        if unlocked and channel in channelsAllowed:
             if message.content.startswith('inspire'):
                 await message.channel.send(get_quote())
             elif message.content.startswith('wiki'):
