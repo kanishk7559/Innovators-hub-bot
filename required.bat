@@ -11,3 +11,4 @@ pip3.6 install keras -q
 pip3.6 install discord -q
 pip3.6 install python-dotenv -q
 pip3.6 install praw -q
+pip3.6 install tensorflow =q
