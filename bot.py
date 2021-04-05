@@ -33,13 +33,13 @@ client = discord.Client()
 clientWA = wolframalpha.Client(APIid)
 owm = pyowm.OWM(owmkey)
 
-clientid=os.getenv("client_id")
-clientsecret = os.getenv("client_secret")
-password=os.getenv("password")
-useragent=os.getenv("user_agent")
-username=os.getenv("user_name")
+clientid = os.getenv("clientId")
+clientsecret = os.getenv("clientSecret")
+password = os.getenv("password")
+useragent = os.getenv("userAgent")
+username = os.getenv("user_name")
 
-
+print(clientid,clientsecret,password,useragent,username,sep = "\n")
 reddit = praw.Reddit(client_id=clientid,
                      client_secret=clientsecret, 
                      password=password,
@@ -111,6 +111,10 @@ def getmeme():
     subreddit = reddit.subreddit("memes")
     meme = subreddit.random()
     return meme.url
+def getmemeNews():
+    subreddit = reddit.subreddit("MNN_MemeNewsNetwork")
+    meme = subreddit.random()
+    return meme.url
 
 
 
@@ -143,7 +147,7 @@ def predict_class(sentence, model):
     # filter out predictions below a threshold
     p = bow(sentence, words, show_details=False)
     res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.10
+    ERROR_THRESHOLD = 0.05
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     # sort by strength of probability
     results.sort(key=lambda x: x[1], reverse=True)
@@ -206,35 +210,40 @@ class MyClient(discord.Client):
                     await message.reply(j)
             elif (message.content == 'quit'):
                 exit()
-            elif (message.content.startswith("")):
-                ints = predict_class(msg, model)
-                tag = ints[0]['intent']
-                res = getResponse(ints, intents)
-                await message.channel.send(res.format(message))
-                if tag == "news":
-                    for j in search("Top Headlines for today", tld="co.in", num=1, stop=1, pause=2):
-                        await message.reply(j)
-
-                if ints[0]['intent'] == 'Timetable':
-                    reply = checktimetable()
-                    await message.reply(reply)
-                elif ints[0]['intent'] == 'weather':
-                    weather = owm.weather_at_place('Pune')
-                    w = weather.get_weather()
-                    tempdict = w.get_temperature('celsius')
-                    reply = f"Temperature right now is {tempdict['temp']}°C, today's maximum will be {tempdict['temp_max']}°C and minimum will be {tempdict['temp_min']}°C ."
-                    await message.reply(reply)
-                
-                elif ints[0]['intent']=="meme":
-                    reply=getmeme()
-                    await message.reply(reply)
-                if (message.content.startswith('solve')):
+            elif (message.content.startswith('solve')):
                     question = message.content[6:]
                     res = clientWA.query(question)
                     answer = next(res.results).text
                     await message.reply("Here is the result to your query: ")
                     await message.channel.send(answer)
                     res.clear()
+            elif (message.content.startswith("")):
+                ints = predict_class(msg, model)
+                tag = ints[0]['intent']
+                res = getResponse(ints, intents)
+                await message.channel.send(res.format(message))
+            
+                if tag == "news":
+                    for j in search("Top Headlines for today", tld="co.in", num=1, stop=1, pause=2):
+                        await message.reply(j)
+
+                elif tag == 'Timetable':
+                    reply = checktimetable()
+                    await message.reply(reply)
+                elif tag == 'weather':
+                    weather = owm.weather_at_place('Pune')
+                    w = weather.get_weather()
+                    tempdict = w.get_temperature('celsius')
+                    reply = f"Temperature right now is {tempdict['temp']}°C, today's maximum will be {tempdict['temp_max']}°C and minimum will be {tempdict['temp_min']}°C ."
+                    await message.reply(reply)
+                
+                elif tag=="meme":
+                    reply=getmeme()
+                    await message.reply(reply)
+                elif tag=="memenews":
+                    reply=getmemeNews()
+                    await message.reply(reply)
+                
 
 
 client = MyClient()
