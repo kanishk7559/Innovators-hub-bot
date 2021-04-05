@@ -1,6 +1,6 @@
 {"intents": [
     {"tag": "greeting",
-     "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+     "patterns": ["Hi", "Howxx you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
      "responses": ["Hello! What's up?", "Good to see you again", "Hi there, how can I help?"],
      "context": [""]
     },
@@ -58,7 +58,7 @@
     },
     {"tag": "God",
     "patterns": ["Do you know god?", "Who is god", "Can you tell me anything about god","does god exists?","is there a god?"],
-    "responses": ["god hunnnnn, let me think may be next time i can answer that ","I don't, as i was not created by a human", "Wait i need to ask that to my creator","i'm not sure right now"],
+    "responses": ["god hunnnnn, let me think may be next time i can answer that ","I don't know, as i was not created by a human", "Wait I need to ask that to my creator","i'm not sure right now"],
     "context_set": [""]
     },
     {"tag": "joke",
@@ -96,6 +96,11 @@
     "responses": ["Searching ..."],
     "context_set": ["wikipedia"]
     },
+    {"tag": "memenews",
+    "patterns": ["memenews", "get meme form news"],
+    "responses": ["Getting meme news ..."],
+    "context_set": ["memenews"]
+    },
     {"tag": "news",
     "patterns": ["get me news updates?", "todays news", "top headlines", "current news", "news headlines"],
     "responses": ["Getting news ..."],
@@ -108,7 +113,7 @@
     },
     
     {"tag": "Timetable",
-     "patterns": ["What's the schedule like today?", "What are my lectures for the day", "What is the timetable for today", "List of classes today","List of lectures", "Show timetable"],
+     "patterns": ["What's the schedule ?", "What are my lectures for the day", " timetable today", "classes today","lectures", "Show timetable"],
      "responses": ["Loading up timetable"],
      "context": [""]
     },
