@@ -37,7 +37,7 @@ clientid=os.getenv("client_id")
 clientsecret = os.getenv("client_secret")
 password=os.getenv("password")
 useragent=os.getenv("user_agent")
-username=os.getenv("username")
+username=os.getenv("user_name")
 
 
 reddit = praw.Reddit(client_id=clientid,
