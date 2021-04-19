@@ -6,7 +6,7 @@
 
 *Just developing a python nltk and keras based natural language processing bot!*
 
-###For Windows
+**For Windows**
 
 **Clone the repository**
 
